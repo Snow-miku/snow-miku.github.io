@@ -1,28 +1,88 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <link rel="stylesheet" href="./index.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <!--
+      <script src="index.js"></script>
+    -->
+    <title>Alan's Portfolio</title>
   </head>
-  <body>
-    <div class="page-container">
-      <h1 class="header">Rumplestiltskin's portfolio page!</h1>
-      <p>This is where I am documenting my work for HCDE 438.</p>
 
-      <h2>projects</h2>
-      <div class="picture-container">
-        <a href="./bio/bio.html">
-          <img
-            class="picture"
-            src="https://upload.wikimedia.org/wikipedia/commons/b/b3/Goblin_illustration_from_19th_century.jpg"
-          />
-        </a>
-        <a href="./recipe/recipe.html">
-          <img
-            class="picture"
-            src="https://picky-palate.com/wp-content/uploads/2010/08/BlueberryOatmealCookie2.jpg"
-          />
-        </a>
-      </div>
-    </div>
+  <body>
+    <header>
+      <p>AZ</p>
+    </header>
+    <nav class="flex-container" id="nav">
+      <ul>
+        <li>
+          <a href="./mp0/mp0.html">MP0</a>
+        </li>
+        <li>
+          <a href="./about-me/about-me.html">
+            <p>About Me</p>
+          </a>
+        </li>
+        <li>
+          <a href="./cheatsheets/cheatsheets.html">
+            <p>Cheatsheets</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <section>
+        <h1>ALAN ZHOU</h1>
+        <h2>Engineer. Creator. Dreamer</h2>
+        <q>
+          Welcome to my portfolio. I invite you to explore my site
+          to get learn a little more about me, my skills, and my
+          professional experience. Enjoy browsing, and feel free to
+          get in touch with any questions. :)
+        </q>
+      </section>
+
+      <section>
+        <h2>Classes I'm currently taking</h2>
+
+        <section id="class-container">
+          <section class="class-cards">
+            <p class="hidden">HCDE 438</p>
+          </section>
+
+          <section class="class-cards">
+            <p class="hidden">HCDE 492</p>
+          </section>
+
+          <section class="class-cards">
+            <p class="hidden">GEOG 360</p>
+          </section>
+        </section>
+      </section>
+
+      <section>
+        <h2>My Favorite Quote</h2>
+
+        <article>
+          <blockquote>
+              I’ve been a Black hole in the classroom for far too long;<br>
+              Absorbing everything, without allowing my light escape.<br>
+              But those days are done. I belong among the stars.<br>
+              And so do you. And so do they.<br>
+              Together, we can inspire galaxies of greatness<br>
+              For generations to come.<br>
+              No, sky is not the limit. It is only the beginning.<br>
+              Lift off.<br>
+          </blockquote>
+          <footer>LIVINGSTON, DONOVAN. (May 25, 2016). <em>Lift Off</em>.</footer>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <p>©2023 Alan Zhou. All Right Reserved</p>
+    </footer>
   </body>
 </html>

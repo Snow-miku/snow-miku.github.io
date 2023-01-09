@@ -1,3 +1,157 @@
+body {
+  background-color: #e8ffff;
+  color: #213e3b;
+  font-family: "Raleway", sans-serif;
+  line-height: 200%;
+}
+
+main {
+  width: 80%;
+}
+
+body, main, #poke-board img {
+  margin: auto;
+}
+
+header, nav {
+  position: sticky;
+}
+
+#nav {
+  background-color: #555555;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+li {
+  display: inline-block
+}
+
+header, body > footer, #class-container, .class-cards, .song-box {
+  display: flex;
+}
+
+body > header {
+  top: 0;
+  background-color: #fbf7f0;
+}
+
+header a {
+  align-items: flex-end;
+  background-color: #9ba4b4;
+  margin: 10px;
+  border: solid #5B6DCD 5px;
+  padding: 5px 10px;
+}
+
+#poke-board {
+  border-style: double;
+  border-color: orange;
+  border-width: 8px;
+  border-radius: 0.5em;
+  background-color: #181B1D;
+  padding: 10px;
+}
+
+#poke-board img {
+  display: block;
+}
+
+#pokeImg {
+  height: 400px;
+  width: 400px;
+}
+
+#poke-board p {
+  color: #2699a9;
+  margin-left: 10px;
+}
+
+body > footer {
+  bottom: 0;
+  background-color: #686d76;
+}
+
+h1 {
+  color: #7579e7;
+  font-size: 40px;
+}
+
+h2, h3 {
+  color: #41aea9;
+  font-size: 28px;
+}
+
+a {
+  font-style: italic;
+}
+
+h1, blockquote > p, body > footer {
+  text-align: center;
+}
+
+blockquote > p, .class-cards > p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+blockquote > footer {
+  font-size: 14px;
+}
+
+img {
+  max-width: 600px;
+}
+
+#class-container, .class-cards, body > footer, .song-box {
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.class-cards {
+  flex-direction: column;
+  background-color: #555555;
+  margin: 15px;
+  height: 200px;
+  width: 150px;
+}
+
+.class-cards > p {
+  color: #cdc9c3;
+}
+
+#music-box form p {
+  margin-top: 0;
+}
+
+#result-panel {
+  min-height: 300px;
+  width: 550px;
+  border-style: groove;
+  border-color: #cc0e74;
+  border-width: 12px;
+  border-radius: 1em;
+  background-color: black;
+  padding: 0px 10px;
+  color: #009ea3;
+}
+
+.song-box {
+  box-shadow: 0 1px #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.hidden::target {
+  display: block;
+}
+
 .picture {
   width: 300px;
   border: 1px solid black;
