@@ -17,7 +17,13 @@ header, nav {
   position: sticky;
 }
 
-#nav {
+#logo {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+#menu {
   background-color: #555555;
 }
 
