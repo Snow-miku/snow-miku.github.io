@@ -1,20 +1,13 @@
-.picture {
-  width: 300px;
+img {
+  width: 40%;
   border-radius: 10px;
   object-fit: cover;
   aspect-ratio: 1;
+  object-position: 20% 0%;
 }
 
-.bio-container {
-  display: flex;
-  width: 80%;
+#bio-section {
   margin: auto;
   margin-top: 5rem;
-  gap: 12px;
-}
-
-body {
-  background-color: black;
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
+  gap: 4rem;
 }

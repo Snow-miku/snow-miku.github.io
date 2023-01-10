@@ -1,52 +1,163 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <link rel="stylesheet" href="./recipe.css" />
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="mp0.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <!--
+      <script src="index.js"></script>
+    -->
+    <title>Alan's Portfolio - MP0</title>
   </head>
+
   <body>
-    <div class="recipe-container">
-      <h1>Blueberry Oatmeal Cookies</h1>
-      <h2>Ingredients</h2>
-      <ul class="ingredient-list">
-        <li>2 sticks softened butter</li>
-        <li>3/4 cup granulated sugar</li>
-        <li>1 cup brown sugar (packed)</li>
-        <li>2 eggs</li>
-        <li>1 1/2 Tbsp. pure vanilla</li>
-        <li>2 1/2 cups all purpose flour</li>
-        <li>2 1/2 cups oatmeal (I used quick oats)</li>
-        <li>1 tsp. baking soda</li>
-        <li>1 tsp. kosher salt</li>
-        <li>2 cups caramel (Bits, by Kraft)</li>
-        <li>1 1/2 cups dried blueberries (found mine at Costco)</li>
-        <li>1 cup white chocolate chips (or chopped white chocolate)</li>
+    <header id="logo">
+      <a href="../index.html">
+        <p>AZ</p>
+      </a>
+    </header>
+    <nav>
+      <ul class="flex-container" id="menu">
+        <li>
+          <a href="mp0.html">
+            <p>MP0</p>
+          </a>
+        </li>
+        <li>
+          <a href="../about-me/about-me.html">
+            <p>About Me</p>
+          </a>
+        </li>
+        <li>
+          <a href="../cheatsheets/cheatsheets.html">
+            <p>Cheatsheets</p>
+          </a>
+        </li>
       </ul>
-      <h2>Directions</h2>
-      <ol class="directions">
-        <li>Preheat oven to 350 degrees F.</li>
+    </nav>
+
+    <main>
+      <h1>The MP0 Writeup</h1>
+      <p>Last updated: 2023/1/10</p>
+
+      <h2>Overview</h2>
+      <ol>
         <li>
-          In a stand mixer, beat the butter and sugars until light and fluffy.
-        </li>
-        <li>Beat in eggs and vanilla until well combined.</li>
-        <li>
-          Place flour, oatmeal, baking soda and salt into a large bowl; mix to
-          combine.
-        </li>
-        <li>
-          Add dry ingredients to wet ingredients along with the caramel bits,
-          blueberries and white chocolate. Mix until just combined.
-        </li>
-        <li>
-          If using a muffin top pan, spray with cooking spray, scoop about 1/4
-          Cup dough into each muffin top pan cup, then press to about 1/2 inch
-          thick. Bake for 11-14 minutes or until edges are just golden brown.
+          <p>STPE 1: Firstly I have to setup my environment in order to program.
+            Since I have used VSCode and conducted several web programming projects
+            before, I just needed to download extensions such as Live Sever, and I
+            picked Monokai Pro as the to-go theme.
+          </p>
         </li>
         <li>
-          If using a normal baking sheet. Use a medium cookie scoop and scoop
-          dough onto a silpat or parchment lined baking sheet. Bake for 9-11
-          minutes or until edges are just turning golden brown.
+          <p>STPE 2: Then I created the repository on github named as `username.github.io`
+            so it recognized as user web. Next, clone the repository locally and copied
+            and pasted the templated provided from the class github. Made a simple push,
+            then, I am ready to add my own contents.
+          </p>
         </li>
-        <li>Remove and let cool for 5 minutes before removing from pan.</li>
+        <li>
+          <p>STPE 3: Since I have done a simple personal website before, therfore, I
+            followed that one as an example, finished a draft index html template with
+            proper tags, heritage, classes' and ids' names. I also have looked up on
+            what elements do a general portfolio website need to have so that I am using
+            the right sementic tags and planned layout.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 4: I slowly added basic CSS styling in index.css, which including colors,
+            fonts, universal margins and width for a consistent look. I also assigned
+            different font sizes and colors for different levels of headings and texts.
+            Up to this point, my website looks as bellow.
+          </p>
+        </li>
+
+        <img src="../img/mp0_screenshot_1.png" alt="A screenshot of the website in middle progress">
+
+        <li>
+          <p>STPE 5: Then I keeps doing minor adjustments and testing them with the help
+            of all in one developer toolbox in chrome. The livesever is also helpful in
+            reflecting the real-time modification so I know what works and what does not.
+            Many issues occurs in this step where I need to do iterative changing and testing
+            to make the website ideal.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 6: I created files for both html and css for about me, cheatsheet, and MP0
+            Writeup pages in the proper directory. Then I copied the coding from my index.html
+            to them because I wanted to keep the basic layout, such as header, footer, and
+            navigation bar. I then deleted the content under &lt;body&gt; to replace contents I
+            want to have on these pages.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 7: I changed the links that connect to each page accordingly since the directory
+            is different. I also put all the pictures I wanted to use in a folder called img for
+            easy management and reference.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 8: Lastly, I wrote the writeup, browsing between each page to make sure there is
+            no bugs or typos.
+          </p>
+        </li>
       </ol>
-    </div>
+
+      <h2>Issue</h2>
+        <p>One issue I encountered was that as I am creating multiple subpages from my index.html, I
+          wanted to apply the css styling from the main page to other pages for universal look and
+          consistent aesthetics. However, I could not find a way to inherit or import the stylesheet
+          like what we usually do with java and python. Simply copy and paste everything is redundent
+          and nonoptimal for futur debugging and maintainence. Eventually, after many searching, I
+          find out that I can link mutliple stylesheets in one html file, and the more specific
+          styling can just overwrite the original.
+        </p>
+
+      <h2>CSS Transition</h2>
+        <p>The CSS Transition I utilized in this project is the class cards on the home page. The
+          expected behavior is when you hover the mouse at the card, the actual course I am taking
+          this quarter will slowly appear. This is actually the first time I hear and use the Transition
+          feature of css. I chose this behavior is because I simply want to make some sort of card drawing
+          and flipping animation as I am a huge fan of card tricks and card games. I achieve this
+          functionabiltiy by using setting `transition: opacity 0.5s ease-in-out;` for the text within
+          each card and opacity as 0 as the initial state. In this way, the transition will change the
+          opacity of the text in 0.5s as ease-in-out. However, in order to initiate this action, I need to
+          set the text p:hover with css property opacity:1. So that when a cursor hover on the text, the
+          opacity should change to 1, which displays. However, the cursor has to position on the text in
+          order to make the behavior happen, where the text was originally unseen. Thus, I modified the box
+          of the p element to make top, right, bottom, left all as zero so they cover the entire card container.
+          The following is a gif of how the transition works.
+        </p>
+
+        <img src="../img/transition.gif" alt="A gif of the css transition behavior" id="transition-gif">
+
+      <h2>Ideas and Future</h2>
+      <ul>
+        <li>
+          · An organized gallery for showcasing all my projects and artworks.
+        </li>
+        <li>
+          · A more aesthetically pleasing website that features the best color-color choice, nice fonts
+          and sizes, as well as high quality images.
+        </li>
+        <li>
+          · Some animation as the user navigate through the website, or right at the point when they encounter
+          the website.
+        </li>
+        <li>
+          · A little web game that is attached the the main page.
+        </li>
+      </ul>
+
+    </main>
+
+    <footer>
+      <p>©2023 Alan Zhou. All Right Reserved</p>
+    </footer>
   </body>
 </html>
