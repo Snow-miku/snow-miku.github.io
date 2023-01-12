@@ -2,5 +2,7 @@
 (function() {
   window.addEventListener("load", init);
 
-  console.log("Welcome to my portfolio page!");
+  function init() {
+    console.log("Welcome to my portfolio page!");
+  }
 })();
