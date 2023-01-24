@@ -1,0 +1,22 @@
+.recipe-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+img {
+  height: 35rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+#transition-gif {
+  border: .5rem solid black;
+  height: 20rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
