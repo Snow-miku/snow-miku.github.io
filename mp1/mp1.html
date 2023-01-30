@@ -41,51 +41,48 @@
       <h1>The mp1 Writeup</h1>
       <p>Last updated: 2023/1/24</p>
 
-      <h2>Sorry that I was just a bit overwhelmed by workload and spring festival events, I will make sure have everything here by Sunday. Thank you</h2>
+      <h2>Sorry that I was just a bit overwhelmed by workload and spring festival events, I will make sure have everything here by Monday. Thank you</h2>
 
       <h2>Overview</h2>
       <ol>
         <li>
           <p>STPE 1: Firstly I have to setup my environment in order to program.
-            Since I have used VSCode and conducted several web programming projects
-            before, I just needed to download extensions such as Live Sever, and I
-            picked Monokai Pro as the to-go theme.
+            Considering the content of this project, I created a new repository
+            on github named as `Little C Shock`, the name of my extension, and
+            clone to local directory.
           </p>
         </li>
         <li>
-          <p>STPE 2: Then I created the repository on github named as `username.github.io`
-            so it recognized as user web. Next, clone the repository locally and copied
-            and pasted the templated provided from the class github. Made a simple push,
-            then, I am ready to add my own contents.
+          <p>STPE 2: Following the examples provided in class, I created the basic
+            folders and files for the program, which are `manifest.json`, `popup\popup.html`,
+            `popup\popup.css`, `popup\popup.js`, `content-script\conten.js`, and folders
+            for my `images` and `media`.
           </p>
         </li>
         <li>
-          <p>STPE 3: Since I have done a simple personal website before, therfore, I
-            followed that one as an example, finished a draft index html template with
-            proper tags, heritage, classes' and ids' names. I also have looked up on
-            what elements do a general portfolio website need to have so that I am using
-            the right sementic tags and planned layout.
+          <p>STPE 3: I copied the template for `manifest.json` and modified the
+            the objects accordingly, including "manifest_version", "name", "description",
+            "version", "action", "permissions", and "content_scripts". These will be
+            constantly adjusted as I go with the project. I set the "default_popup" to
+            be "popup/popup.html" and created an icon in the base directory, which is
+            set to "default_icon" so chrome could recognize it.
           </p>
         </li>
 
         <li>
-          <p>STPE 4: I slowly added basic CSS styling in index.css, which including colors,
-            fonts, universal margins and width for a consistent look. I also assigned
-            different font sizes and colors for different levels of headings and texts.
-            Up to this point, my website looks as bellow.
+          <p>STPE 4: I go to the "chrome://extensions/" in my chrome browser, load my extension
+            so I can constanly test out the performance later during the process. Once I changed
+            something in my code, I can simply clicked the refresh button.
           </p>
         </li>
-
-        <img src="../img/mp0_screenshot_1.png" alt="A screenshot of the website in middle progress">
 
         <li>
-          <p>STPE 5: Then I keeps doing minor adjustments and testing them with the help
-            of all in one developer toolbox in chrome. The livesever is also helpful in
-            reflecting the real-time modification so I know what works and what does not.
-            Many issues occurs in this step where I need to do iterative changing and testing
-            to make the website ideal.
+          <p>STPE 5: Then I wrote the popup.html and popup.css. I have a checkbox in my popup
+            window so that the user could switch on and off the functionality.
           </p>
         </li>
+
+        <img src="../img/mp1_mid_1.gif" alt="A gif of the extension in middle progress">
 
         <li>
           <p>STPE 6: I created files for both html and css for about me, cheatsheet, and MP0
