@@ -41,9 +41,20 @@
       <h1>The mp1 Writeup</h1>
       <p>Last updated: 2023/1/24</p>
 
-      <h2>Sorry that I was just a bit overwhelmed by workload and spring festival events, I will make sure have everything here by Wednesday. Thank you</h2>
-
       <h2>Overview and Usage</h2>
+
+      <p><a href="../about-me/about-me.html">Link</a> to my extension</p>
+
+      <p>The extension "Little C-Shock" is a highlighting detection tool that catches users' text selection behavior and alerting them from doing so.
+        The reason why it is named that way is because it is an on-going popular meme in China about a youtuber who looks very alike a movie actor
+        who is super justical. The youtuber became trending sooner after he making short videos for ridiculous plots, overly justical characters, and
+        funny lines and music usages. To enable the extension, open the link attached above. Simply download it, and load it by simply clicking "Load
+        unpacked" button on the top left corner of chrome://extensions/ in your chrome website. When clicking the icon, a pop-up window will appear that
+        allows you to switch the detection function on and off. Once it is enabled, simply select any text on your webpage, and an alert will pop-up.
+      </p>
+
+      <p>Following is a gif on the extension's behavior.</p>
+      <img src="../img/mp1_mid_1.gif" alt="A gif of the extension in middle progress">
 
       <h2>Development Process</h2>
       <ol>
@@ -84,27 +95,34 @@
           </p>
         </li>
 
-        <img src="../img/mp1_mid_1.gif" alt="A gif of the extension in middle progress">
-
         <li>
-          <p>STPE 6: I created files for both html and css for about me, cheatsheet, and MP0
-            Writeup pages in the proper directory. Then I copied the coding from my index.html
-            to them because I wanted to keep the basic layout, such as header, footer, and
-            navigation bar. I then deleted the content under &lt;body&gt; to replace contents I
-            want to have on these pages.
+          <p>STPE 6: I wrote the javascript for popup.js, with an event listener on the change
+            of the checkbox element and a function to update the contentscript according to the
+            state of the checkbox.
           </p>
         </li>
 
         <li>
-          <p>STPE 7: I changed the links that connect to each page accordingly since the directory
-            is different. I also put all the pictures I wanted to use in a folder called img for
-            easy management and reference.
+          <p>STPE 7: I wrote the javascript for content.js, with an event listener on the message sent
+            to the content script as well as an event listener that listen to the "mouseup" action. In that
+            way, the program can decide weather user selected text or not and prompt an alert.
           </p>
         </li>
 
         <li>
-          <p>STPE 8: Lastly, I wrote the writeup, browsing between each page to make sure there is
-            no bugs or typos.
+          <p>Following is a gif on basic functionality of the extension.</p>
+          <img src="../img/mp1_mid_1.gif" alt="A gif of the extension in middle progress">
+        </li>
+
+        <li>
+          <p>STPE 8: Then, I wrote the sync method in both javascript files, so that it remembers users' choice
+            on whether to enable the detection or not, meanwhile updating the manifest.json for the permissions.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 9: Lastly, I wrote fix the styling of the css to make the popup window looks better and finish
+            the writeup.
           </p>
         </li>
       </ol>
@@ -115,13 +133,13 @@
           uncheck the box, the checkbox would always display as unchecked every time I open the pop-up window,
           and the detection functionality would remain active.
 
-        <p>Solution: One issue I encountered was that as I am creating multiple subpages from my index.html, I
-          wanted to apply the css styling from the main page to other pages for universal look and
-          consistent aesthetics. However, I could not find a way to inherit or import the stylesheet
-          like what we usually do with java and python. Simply copy and paste everything is redundent
-          and nonoptimal for futur debugging and maintainence. Eventually, after many searching, I
-          find out that I can link mutliple stylesheets in one html file, and the more specific
-          styling can just overwrite the original.
+        <p>Solution: I used console.log to monitor the progress of my program, and realize it never entered that
+          particular method I wrote for sync the settings. I then looked into the example codes in comparison to
+          my files, and figured out that I have the &lt;script&gt; tag inside the &lt;head&gt; instead of at the
+          end of &lt;body&gt;. I might miss the part when it was mentioned in class, but after researching, I
+          understood that the behavior was due to the fact that the script was loaded to early before the DOM finished
+          establishing; Therefore, the script could not detect the elements coded. Everything was fixed after I
+          moved the &lt;script&gt; linking.
         </p>
 
         <img src="../img/transition.gif" alt="A gif of the css transition behavior" id="transition-gif">
@@ -129,18 +147,20 @@
       <h2>Ideas and Future</h2>
       <ul>
         <li>
-          · An organized gallery for showcasing all my projects and artworks.
+          · More indications for the checking and unchecking behavior, such as sound, animation, etc.
         </li>
         <li>
-          · A more aesthetically pleasing website that features the best color-color choice, nice fonts
-          and sizes, as well as high quality images.
+          · Instead of a client alert, using a pop-up window on the web to point out user's highlight-text behavior.
         </li>
         <li>
-          · Some animation as the user navigate through the website, or right at the point when they encounter
-          the website.
+          · Making it more fun of the extension, such as blacking out whatever user was selecting, or replacing them
+          with other texts.
         </li>
         <li>
-          · A little web game that is attached the the main page.
+          · Detect clipboard (copy & paste behavior) instead of mere text selection.
+        </li>
+        <li>
+          · Show different messages depend on the frequences that users highlight text.
         </li>
       </ul>
 
