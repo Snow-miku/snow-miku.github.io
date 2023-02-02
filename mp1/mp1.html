@@ -41,9 +41,11 @@
       <h1>The mp1 Writeup</h1>
       <p>Last updated: 2023/1/24</p>
 
-      <h2>Sorry that I was just a bit overwhelmed by workload and spring festival events, I will make sure have everything here by Monday. Thank you</h2>
+      <h2>Sorry that I was just a bit overwhelmed by workload and spring festival events, I will make sure have everything here by Wednesday. Thank you</h2>
 
-      <h2>Overview</h2>
+      <h2>Overview and Usage</h2>
+
+      <h2>Development Process</h2>
       <ol>
         <li>
           <p>STPE 1: Firstly I have to setup my environment in order to program.
@@ -107,30 +109,19 @@
         </li>
       </ol>
 
-      <h2>Issue</h2>
-        <p>One issue I encountered was that as I am creating multiple subpages from my index.html, I
+      <h2>Issue Deep-Dive</h2>
+        <p>Issue: When I try to uncheck the checkbox in my pop-up window and disable the functionality of
+          the extension manually, the javascript did not allow me to do that. No matter how I check or
+          uncheck the box, the checkbox would always display as unchecked every time I open the pop-up window,
+          and the detection functionality would remain active.
+
+        <p>Solution: One issue I encountered was that as I am creating multiple subpages from my index.html, I
           wanted to apply the css styling from the main page to other pages for universal look and
           consistent aesthetics. However, I could not find a way to inherit or import the stylesheet
           like what we usually do with java and python. Simply copy and paste everything is redundent
           and nonoptimal for futur debugging and maintainence. Eventually, after many searching, I
           find out that I can link mutliple stylesheets in one html file, and the more specific
           styling can just overwrite the original.
-        </p>
-
-      <h2>CSS Transition</h2>
-        <p>The CSS Transition I utilized in this project is the class cards on the home page. The
-          expected behavior is when you hover the mouse at the card, the actual course I am taking
-          this quarter will slowly appear. This is actually the first time I hear and use the Transition
-          feature of css. I chose this behavior is because I simply want to make some sort of card drawing
-          and flipping animation as I am a huge fan of card tricks and card games. I achieve this
-          functionabiltiy by using setting `transition: opacity 0.5s ease-in-out;` for the text within
-          each card and opacity as 0 as the initial state. In this way, the transition will change the
-          opacity of the text in 0.5s as ease-in-out. However, in order to initiate this action, I need to
-          set the text p:hover with css property opacity:1. So that when a cursor hover on the text, the
-          opacity should change to 1, which displays. However, the cursor has to position on the text in
-          order to make the behavior happen, where the text was originally unseen. Thus, I modified the box
-          of the p element to make top, right, bottom, left all as zero so they cover the entire card container.
-          The following is a gif of how the transition works.
         </p>
 
         <img src="../img/transition.gif" alt="A gif of the css transition behavior" id="transition-gif">
