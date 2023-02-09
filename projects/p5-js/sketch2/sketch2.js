@@ -7,10 +7,10 @@ function preload() {
 // Create a new canvas to the browser size
 function setup() {
   createCanvas(windowWidth, windowHeight);
-
-  strokeWeight(10);
+  strokeWeight(random(5, 15));
   rectMode(CENTER);
   noFill();
+  frameRate(1);
 }
 
 // On window resize, update the canvas size
@@ -19,8 +19,9 @@ function windowResized() {
 }
 
 function draw() {
-  // Fill in the background
-  background(colors.background);
+ // Fill in the random background
+  let randBg = random(colors.list);
+  background(randBg);
 
   // Get center of page
   const x = width / 2;
@@ -35,8 +36,16 @@ function draw() {
   let curWidth = 0;
   let iteration = 0;
 
+  //console.log(Math.floor(random(0,12)));
+
   while (curWidth < maxDim * 1.1) {
-    stroke(colors.list[iteration%12]);
+    let randStr = random(colors.list);
+    //console.log(randStr == randBg);
+
+    while (randStr === randBg) {
+      randStr = random(colors.list);
+    }
+    stroke(randStr);
     rotate(PI/12);
     rect(0, 0, curWidth);
     curWidth += width / 26;
