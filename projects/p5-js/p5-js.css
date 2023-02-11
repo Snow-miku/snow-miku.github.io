@@ -1,4 +1,26 @@
-body {
-  padding: 0;
+.flex-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.sketch-box {
+  background-color:black;
+  color: azure;
+  padding: 1em;
+  text-align: left;
   margin: 0;
+  box-sizing: border-box;
+  display: block;
+  text-decoration: none;
+  min-height: 250px;
+}
+
+.sketch-box a:link, .sketch-box a:visited {
+  color: azure;
+}
+
+img {
+  height: 35rem;
+  border-radius: 10px;
+  object-fit: cover;
 }

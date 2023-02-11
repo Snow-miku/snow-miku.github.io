@@ -49,7 +49,7 @@ header, nav {
   justify-content: space-between;
 }
 
-li {
+#menu li {
   display: inline-block
 }
 
