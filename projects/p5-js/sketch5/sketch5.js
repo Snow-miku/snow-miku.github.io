@@ -2,10 +2,10 @@ let colors, sound;
 
 function preload() {
   colors = loadJSON("../color-palette.json");
-  sound = loadSound("../sound/sound.mp3")
+  sound = loadSound("../sound/wind.mp3")
 }
 
-let x, y, osc, freq;
+let x, y;
 
 // Create a new canvas to the browser size
 function setup() {
@@ -17,10 +17,9 @@ function setup() {
   x = width / 2;
   y = height / 2;
 
-  Tone.Master.volume.value = -100;
-
-  osc = new p5.Oscillator('sine');
-  osc.connect(Tone.Master);
+  // osc = new p5.Oscillator('sine');
+  // osc.amp(0.01);
+  sound.setVolume(10);
 }
 
 // On window resize, update the canvas size
@@ -30,23 +29,27 @@ function windowResized() {
 
 // Trigger synth OFF
 function mousePressed () {
-  osc.start();
+  //osc.start();
+  sound.loop();
 }
 
 // Trigger synth OFF
 function mouseReleased () {
-  osc.stop();
+  //osc.stop();
+  sound.stop();
 }
 
 function draw() {
   // Fill in the background
   background(colors.background);
-  freq = map(mouseX, 0, width, 200, 800);
 
   // Shift the coordinate system
   if (mouseIsPressed) {
     x = mouseX;
     y = mouseY;
+    //osc.freq(map(x, 0, width, 200, 800));
+    sound.rate(map(x, 0, width, 0, 2));
+    //console.log(map(x, 0, width, 0, 2));
   }
 
   // Shift the coordinate system

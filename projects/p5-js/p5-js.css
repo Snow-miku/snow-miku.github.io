@@ -1,18 +1,25 @@
 .flex-container {
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .sketch-box {
+  width: 25rem;
+  height: 32rem;
   background-color:black;
   color: azure;
   padding: 1em;
-  text-align: left;
-  margin: 0;
+  text-align: center;
+  margin: 0.5em auto;
   box-sizing: border-box;
   display: block;
   text-decoration: none;
   min-height: 250px;
+}
+
+.sketch-box a, .sketch-box p {
+  text-align: left;
 }
 
 .sketch-box a:link, .sketch-box a:visited {
@@ -20,7 +27,8 @@
 }
 
 img {
-  height: 35rem;
+  width: 20rem;
+  height: 20rem;
   border-radius: 10px;
   object-fit: cover;
 }

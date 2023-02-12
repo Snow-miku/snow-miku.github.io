@@ -22,6 +22,10 @@ main {
   margin: auto;
 }
 
+img {
+  max-width: 80%;
+}
+
 /* navagation bar */
 
 body > header {
