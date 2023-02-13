@@ -27,13 +27,13 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-// Trigger synth OFF
+// Trigger sound ON
 function mousePressed () {
   //osc.start();
   sound.loop();
 }
 
-// Trigger synth OFF
+// Trigger sound OFF
 function mouseReleased () {
   //osc.stop();
   sound.stop();
