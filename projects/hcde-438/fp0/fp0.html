@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../index.css">
+    <link rel="stylesheet" href="fp0.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <!--
+      <script src="index.js"></script>
+    -->
+    <title>Alan's Portfolio - fp0</title>
+  </head>
+
+  <body>
+    <header id="logo">
+      <a href="../../../index.html">
+        <p>AZ</p>
+      </a>
+    </header>
+    <nav>
+      <ul class="flex-container" id="menu">
+        <li>
+          <a href="../mp0/mp0.html">
+            <p>MP0</p>
+          </a>
+        </li>
+        <li>
+          <a href="../mp1/mp1.html">
+            <p>MP1</p>
+          </a>
+        </li>
+        <li>
+          <a href="../mp2/mp2.html">
+            <p>MP2</p>
+          </a>
+        </li>
+        <li>
+          <a href="mp3.html">
+            <p>MP3</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../p5-js/p5-js.html">
+            <p>Project Gallery</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../../about-me/about-me.html">
+            <p>About Me</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../../cheatsheets/cheatsheets.html">
+            <p>Cheatsheets</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>The mp3 Writeup</h1>
+      <p>Last updated: 2023/2/21</p>
+
+      <h2>Overview and Usage</h2>
+
+      <p><a href="https://snow-miku.github.io/Dev-Toolchain-JRPG/">Link</a> to my game</p>
+
+      <p>Tap Hero (Simple Ver.):</p>
+
+      <p>
+        This game is a battle game similar to "click hero" where the user just
+        need to simple progress the attack button in order to damage the enemy.
+        Click the start button to start a game. A battle theme song will be
+        played. The goal is to attack the enemy and try to empty its health bar.
+        Once the enemy's hp reaches zero, a winning music will be played, and a
+        prompt will pop up to indicate your winning. After the music, the game
+        will be initialized to its start menu.
+      </p>
+
+      <p>Following is a gif of the game in progress.</p>
+      <div class="flex-container">
+        <img src="img/mp3-final.gif" alt="A gif of the game page">
+      </div>
+
+      <h2>Development Process</h2>
+      <ol>
+        <li>
+          <p>STPE 1: Download node.js on the device. Create a new git hub
+            resporitory and set to public.
+          </p>
+        </li>
+        <li>
+          <p>STPE 2: Initialize the `package.jspn` with `npm init`. Install
+            the p5.play library.
+          </p>
+        </li>
+        <li>
+          <p>STPE 3: Create an index.html file with the copied template. Also,
+            create the index.js file with the basic setup() and empty draw()
+            funcitons.
+          </p>
+        </li>
+        <li>
+          <p>STPE 4: Install a local dev server, Rollup, the node-resolve plugin,
+            the copy plugin, and the gh-pages package using npm.
+          </p>
+        </li>
+
+        <li>
+          STPE 5: In package.json, copied the three scripts corresponded to the
+            npm package installed:
+            <ul>
+              <li>"start": "web-dev-server --node-resolve --open --watch"</li>
+              <li>"build": "rollup --config"</li>
+              <li>"deploy": "npm run build && gh-pages -d dist"</li>
+            </ul>
+        </li>
+
+        <li>
+          <p>STPE 6: Create folders for media. Prepare, download, rename, and
+            organize the files.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 7: In index.js, write helper functions for creating the necessary
+            sprites with p5.play and draw them at the proper coordinates.
+          </p>
+        </li>
+
+        <p>Looks like the following:</p>
+        <section class="flex-container">
+          <img src="img/mp3-middle.png" alt="game in middle progress">
+        </section>
+
+        <li>
+          <p>STPE 8: Write functions for game mechanics, such as start, winning,
+            and ending stages, as well as the game statistics behaviors.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 9: Debugs, tests, and polishes the game with npm run start.
+        </li>
+
+        <li>
+          <p>STPE 10: Create a configuration file for Rollup called rollup.config.js.
+            Add necessary elements under copy plugin and `treeshake: false`.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 11: Deploy the webpage with npm run deploy and check if it is
+            successfully deployed at `username.github.io/repositoryname`.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 12: Finish the writeup.
+          </p>
+        </li>
+      </ol>
+
+      <h2>Issue Deep-Dive</h2>
+        <p>Issue: As I tried to implement the health bar and make it have the effect of
+          constantly reflecting the hp lost, I struggled on how to make the lost health
+          only got deducted from the right side.
+
+        <p>Solviong Process: Initially I only have one sprite representing the health bar,
+          and I could not find any method that can only changes the color fill within the
+          shape. Eventually, I decided to do two sprites the stacks on each other so one
+          could be the outline and the other be the actuall health. However, it was hard
+          to display the health correctly since the sprite are coordinated at the center
+          in stead of the left corner. I managed to do the calculation of the current
+          health percentage, and multiplied that with a saved original healthbar length.
+          I also need to devided the position shift by two since it is referred to the
+          center.
+        </p>
+
+      <h2>Ideas and Future</h2>
+      <ul>
+        <li>
+          More animations shown on characters attacking each other as the player activate attack.
+        </li>
+        <li>
+          Add randomness to the damage and have word prompt indicator for better hit response.
+        </li>
+        <li>
+          Add turn-based mechanics so that the opponent could attack the player as well.
+        </li>
+        <li>
+          Add selection for different characters swipes.
+        </li>
+        <li>
+          Add other movement options besides attack, such as defence, heal, etc.
+        </li>
+      </ul>
+
+    </main>
+
+    <footer>
+      <p>©2023 Alan Zhou. All Right Reserved</p>
+    </footer>
+  </body>
+</html>
