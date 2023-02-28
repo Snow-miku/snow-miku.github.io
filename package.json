@@ -1,0 +1,26 @@
+{
+  "name": "snow-miku.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "web-dev-server --node-resolve --open --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Snow-miku/snow-miku.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Snow-miku/snow-miku.github.io/issues"
+  },
+  "homepage": "https://github.com/Snow-miku/snow-miku.github.io#readme",
+  "dependencies": {
+    "lit-html": "^2.6.1"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.1.35"
+  }
+}
