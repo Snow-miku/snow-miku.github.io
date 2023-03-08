@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../../../index.css">
+    <link rel="stylesheet" href="fp0.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <!--
+      <script src="index.js"></script>
+    -->
+    <title>Alan's Portfolio - fp0</title>
+  </head>
+
+  <body>
+    <header id="logo">
+      <a href="../../../index.html">
+        <p>AZ</p>
+      </a>
+    </header>
+    <nav>
+      <ul class="flex-container" id="menu">
+        <li>
+          <a href="../mp0/mp0.html">
+            <p>MP0</p>
+          </a>
+        </li>
+        <li>
+          <a href="../mp1/mp1.html">
+            <p>MP1</p>
+          </a>
+        </li>
+        <li>
+          <a href="../mp2/mp2.html">
+            <p>MP2</p>
+          </a>
+        </li>
+        <li>
+          <a href="mp3.html">
+            <p>MP3</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../p5-js/p5-js.html">
+            <p>Project Gallery</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../../about-me/about-me.html">
+            <p>About Me</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../../cheatsheets/cheatsheets.html">
+            <p>Cheatsheets</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>The fp1 Writeup</h1>
+      <p>Last updated: 2023/3/8</p>
+
+      <h2>Maou To Yuusha</h2>
+
+      <p><a href="https://snow-miku.github.io/Dev-Toolchain-JRPG/">Link</a> to my game</p>
+
+      <p>
+        This game is a advanced version of my mp3. It is a battle game
+        that allow user to pick a character and beat enemy in a turn-based
+        strategic form. The goal is to attack the enemy and empty its health
+        bar. Once the enemy's hp reaches zero, a winning music will be played,
+        and the player can choose to resume to the next level. The character
+        can level up and the enemy will increase in difficulty as well.
+      </p>
+
+      <h2>Drawings of Envisioned Interface</h2>
+
+      <div class="flex-container">
+        <div class="sketch-box">
+          <img src="./img/game-menu.png" alt="Game Menu Interface" class="sketch">
+          <h3>Game Menu</h3>
+        </div>
+        <div class="sketch-box">
+          <img src="./img/in-game.png" alt="In-Game Battle Scene" class="sketch">
+          <h3>In-Game Battle Scene</h3>
+        </div>
+      </div>
+
+      <h2>Two Versions of the Project</h2>
+
+      <h3>Prototype version</h3>
+      <p>
+        The prototype version will have a complete menu interface where the user
+        can set up their character. It will use the firebase for storing character
+        data such as the look, level, and damage. This version will also have
+        the entire functionality for the game control mechanics that it will shift
+        face when the user click start game, increase the difficulty of the enemy
+        as the player progresses, and choices for the player to either attack, save
+        the game, or defence. The enemy will also be implemented to attack back after
+        every player attack.
+      </p>
+
+      <h3>Final version</h3>
+      <p>
+        It will allow user to switch to different character with an input of character
+        name if it is fetchable. Also, the music, background picture, and the styling
+        of the interface will be further enhanced for aesthetics. Moreover, a more
+        profound calculation of the attack damage will be implemented so that user
+        can view character's attack, defence, and hp statistics.
+      </p>
+
+      <h2>Development process</h2>
+      <ol>
+        <li>
+          <p>STPE 1: Create new repository for the prototype, and tranplant mp3
+            into the new github repository.
+          </p>
+        </li>
+        <li>
+          <p>STPE 2: Initialize the `package.json` with `npm init`. Install
+            a local development server, a build tool, a deployment tool, and
+            any library necessary. Update the package.json script accordingly.
+          </p>
+        </li>
+        <li>
+          <p>STPE 3: Implement the new interface, draw all the canvas elements.
+          </p>
+        </li>
+        <li>
+          <p>STPE 4: Add functionality for the attack to be turn-based, and the
+            enemy is able to fight back. Also store the difficulty level, so the
+            enemy will gain higher attack damage and hp after every player win.
+          </p>
+        </li>
+
+        <li>
+          <p>MILESTONE: PROTOTYPE VERSION.</p>
+        </li>
+
+        <li>
+          <p>STPE 5: Update the music and background image in different phase of
+            the application.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 6: Add funtions to query API for characters' name and image, and
+            allow user to change it in settings/characters.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 7: Implement cross-platform accessibility so the game works in
+            different devices.
+        </li>
+
+        <li>
+          <p>STPE 8: Debugs, tests, and polishes the game.
+          </p>
+        </li>
+
+        <li>
+          <p>MILESTONE: FINAL VERSION.</p>
+        </li>
+      </ol>
+
+      <h2>Known unknowns</h2>
+      <ul>
+        <li>
+          Use firebase to store and fetch data for characters.
+        </li>
+        <li>
+          How to deploy two versions explicitly on github.
+        </li>
+        <li>
+          Use p5 for cross-platform accessibility.
+        </li>
+        <li>
+          Query an online API for character names and images.
+        </li>
+        <li>
+          Using vite for dev server and build tool.
+        </li>
+      </ul>
+
+
+      <h2>Stretch Goals</h2>
+      <ul>
+        <li>
+          Allow the player to choose and use different spells.
+        </li>
+        <li>
+          Allow the use to choose which to enhance after level up,
+          such as damage or hp.
+        </li>
+      </ul>
+
+      <h2>Issue Deep-Dive</h2>
+      <p>Issue: As I tried to implement the health bar and make it have the effect of
+        constantly reflecting the hp lost, I struggled on how to make the lost health
+        only got deducted from the right side.
+
+      <p>Solviong Process: Initially I only have one sprite representing the health bar,
+        and I could not find any method that can only changes the color fill within the
+        shape. Eventually, I decided to do two sprites the stacks on each other so one
+        could be the outline and the other be the actuall health. However, it was hard
+        to display the health correctly since the sprite are coordinated at the center
+        in stead of the left corner. I managed to do the calculation of the current
+        health percentage, and multiplied that with a saved original healthbar length.
+        I also need to devided the position shift by two since it is referred to the
+        center.
+      </p>
+
+    <h2>Ideas and Future</h2>
+    <ul>
+      <li>
+        More animations shown on characters attacking each other as the player activate attack.
+      </li>
+      <li>
+        Add randomness to the damage and have word prompt indicator for better hit response.
+      </li>
+      <li>
+        Add turn-based mechanics so that the opponent could attack the player as well.
+      </li>
+      <li>
+        Add selection for different characters swipes.
+      </li>
+      <li>
+        Add other movement options besides attack, such as defence, heal, etc.
+      </li>
+    </ul>
+
+    </main>
+
+    <footer>
+      <p>©2023 Alan Zhou. All Right Reserved</p>
+    </footer>
+  </body>
+</html>
