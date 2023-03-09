@@ -74,9 +74,10 @@
         can level up and the enemy will increase in difficulty as well.
       </p>
 
-      <p>Following is a gif of the game in progress.</p>
+      <p>Following is are gifs of the two game behavior.</p>
       <div class="flex-container">
-        <img src="img/fp1-final.gif" alt="A gif of the game view">
+          <img src="img/fp1-in-game.gif" class="sketch-box" alt="A gif of the game view">
+          <img src="img/fp1-character-select.gif" class="sketch-box" alt="A gif of the character selection view">
       </div>
 
       <h2>Development process</h2>
@@ -109,26 +110,51 @@
             return every user attack.
           </p>
         </li>
+
+        <li>
+          <p>STPE 6: Rearrange the overall logic of the game so that certain behavior or
+            user action can only happen at certain view.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 7: Finish the character selection panel. Make sure each sprite are clickable
+            and will replace the player character.
+          </p>
+        </li>
+
+        <p>Following is the middle process placeholder for character selection view.</p>
+        <div class="flex-container">
+          <img src="img/fp1-middle.png" alt="character selection view in progress">
+
+        </div>
+
+        <li>
+          <p>STPE 8: Test out all the behavior so that they are properly functioning. Deploy the
+            site to github.
+          </p>
+        </li>
       </ol>
 
       <h2>Issue Deep-Dive</h2>
-      <p>Issue: As I tried to implement the health bar and make it have the effect of
-        constantly reflecting the hp lost, I struggled on how to make the lost health
-        only got deducted from the right side.
+      <p>Issue: As I tried to implement the character selection function, considering that I want
+        easily modifying and adding new characters in the future, I was struggle on what data
+        structure to use and how to make it work.
 
-      <p>Solviong Process: Initially I only have one sprite representing the health bar,
-        and I could not find any method that can only changes the color fill within the
-        shape. Eventually, I decided to do two sprites the stacks on each other so one
-        could be the outline and the other be the actuall health. However, it was hard
-        to display the health correctly since the sprite are coordinated at the center
-        in stead of the left corner. I managed to do the calculation of the current
-        health percentage, and multiplied that with a saved original healthbar length.
-        I also need to devided the position shift by two since it is referred to the
-        center.
+      <p>Solviong Process: I eventually decided to use Group() embedded in p5.play as it allows for
+        a uniform styling of child sprite elements and function as an array, which perfectly suited
+        for character avatars and information. However, this class is very unintuitive to use. I could
+        not figure out how to specify which sprite i am looking at within the group, since I need to
+        click on the sprite to select the character. Eventually, I figured out to use a for loop every
+        time when my mouse clicked to determine the index of the sprite and use that for identifying
+        the exact character player is clicking.
       </p>
 
       <h2>Ideas and Future</h2>
       <ul>
+        <li>
+          Add proper stylings, including pleasing colors and music.
+        </li>
         <li>
           Add database connection for player to save their character current level and data.
         </li>
@@ -145,7 +171,6 @@
           Add other movement options besides attack, such as defence, heal, etc.
         </li>
       </ul>
-
     </main>
 
     <footer>
