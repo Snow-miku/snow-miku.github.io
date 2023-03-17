@@ -13,8 +13,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #e8ffff;
-  color: #213e3b;
+  background-color: azure;
+  color: black;
   font-family: "Raleway", sans-serif;
   line-height: 200%;
 }
@@ -31,13 +31,13 @@ img {
 /* navagation bar */
 
 body > header {
-  top: 0;
-  background-color: azure;
+  padding: 0.5rem 0;
 }
 
 body header a {
   all:unset;
   cursor: pointer;
+  font-size: 1.5rem;
 }
 
 header, nav {
@@ -53,14 +53,24 @@ header, nav {
 #menu {
   flex-direction: row;
   justify-content: space-between;
+  padding-inline: 2em;
+  margin-block: 0;
+  background-color: #1B1B1B;
+  color: white;
 }
 
 #menu li {
   display: inline-block
 }
 
+#menu > li > a{
+  all:unset;
+  cursor: pointer;
+}
+
 .dropdown {
   position: relative;
+  cursor: pointer;
 }
 
 .dropdown-menu {
@@ -81,26 +91,36 @@ header, nav {
 }
 
 .dropdown > p:hover {
-  color: black;
+  color: darkgrey;
 }
 
 /* main */
 
 body > footer {
   bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 2rem;
   background-color: black;
   color: white;
   text-align: center;
 }
 
+footer > p {
+  margin-block: 0;
+  padding: 1rem;
+}
+
 /* main */
 
 h1 {
-  color: #7579e7;
-  font-size: 40px;
+  color: Violet;
+  font-size: 3rem;
+  font-weight: bold;
 }
 
 h2 {
-  color: #41aea9;
+  color: DeepSkyBlue;
   font-size: 28px;
+  font-weight: bold;
 }
