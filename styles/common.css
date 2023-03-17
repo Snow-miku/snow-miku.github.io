@@ -59,6 +59,31 @@ header, nav {
   display: inline-block
 }
 
+.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  left: 0;
+  top: calc(90%);
+  background-color: white;
+  padding: .75rem;
+  border-radius: .25rem;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+.dropdown-menu:hover, .dropdown > p:hover + .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dropdown > p:hover {
+  color: black;
+}
+
 /* main */
 
 body > footer {
