@@ -1,0 +1,49 @@
+.recipe-container {
+  width: 80%;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.flex-container {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.sketch-box {
+  width: 40rem;
+  height: 26rem;
+  background-color:black;
+  color: azure;
+  padding: 1em;
+  text-align: center;
+  margin: 0.5em auto;
+  box-sizing: border-box;
+  display: block;
+  text-decoration: none;
+  min-height: 250px;
+}
+
+img {
+  height: 35rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.sketch {
+  width: 26rem;
+  height: 20rem;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+#transition-gif {
+  border: .5rem solid black;
+  height: 20rem;
+  border-radius: 10px;
+  object-fit: cover;
+}

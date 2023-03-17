@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/styles/common.css">
+    <link rel="stylesheet" href="fp2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+    <!--
+      <script src="index.js"></script>
+    -->
+    <title>Alan's Portfolio - fp2</title>
+  </head>
+
+  <body>
+    <header id="logo">
+      <a href="../../../index.html">
+        <p>AZ</p>
+      </a>
+    </header>
+    <nav>
+      <ul class="flex-container" id="menu">
+        <li>
+          <a href="../mp0/mp0.html">
+            <p>MP0</p>
+          </a>
+        </li>
+        <li>
+          <a href="../mp1/mp1.html">
+            <p>MP1</p>
+          </a>
+        </li>
+        <li>
+          <a href="../mp2/mp2.html">
+            <p>MP2</p>
+          </a>
+        </li>
+        <li>
+          <a href="mp3.html">
+            <p>MP3</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../p5-js/p5-js.html">
+            <p>Project Gallery</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../../about-me/about-me.html">
+            <p>About Me</p>
+          </a>
+        </li>
+        <li>
+          <a href="../../../cheatsheets/cheatsheets.html">
+            <p>Cheatsheets</p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <main>
+      <h1>The fp1 Writeup</h1>
+      <p>Last updated: 2023/3/8</p>
+
+      <h2>Eternal Dungeon</h2>
+
+      <p><a href="https://snow-miku.github.io/Eternal-Dungeon-DEMO/">Link</a> to my game</p>
+
+      <p>
+        This game is a advanced version of my mp3. It is a battle game
+        that allow user to pick a character and beat enemy in a turn-based
+        strategic form. The goal is to attack the enemy and empty its health
+        bar. Once the enemy's hp reaches zero, a winning music will be played,
+        and the player can choose to resume to the next level. The character
+        can level up and the enemy will increase in difficulty as well.
+      </p>
+
+      <p>Following is are gifs of the two game behavior.</p>
+      <div class="flex-container">
+          <img src="img/fp1-in-game.gif" class="sketch-box" alt="A gif of the game view">
+          <img src="img/fp1-character-select.gif" class="sketch-box" alt="A gif of the character selection view">
+      </div>
+
+      <h2>Development process</h2>
+      <ol>
+        <li>
+          <p>STPE 1: Create new repository for the prototype, and migrate mp3
+            into the new github repository.
+          </p>
+        </li>
+        <li>
+          <p>STPE 2: Initialize the `package.json` with `npm init`. Install
+            vite, gh-page, p5.play, and firebase. Update the package.json script
+            accordingly so the server, build and deployment tool will function
+            properly.
+          </p>
+        </li>
+        <li>
+          <p>STPE 3: Implement the new interface, draw all the canva elements including
+            new buttons and text prompts.
+          </p>
+        </li>
+        <li>
+          <p>STPE 4: Implement the new damage and hp calculation formula that based of
+            current levels.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 5: Implement the new mechanics so that the boss will attack back in
+            return every user attack.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 6: Rearrange the overall logic of the game so that certain behavior or
+            user action can only happen at certain view.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 7: Finish the character selection panel. Make sure each sprite are clickable
+            and will replace the player character.
+          </p>
+        </li>
+
+        <p>Following is the middle process placeholder for character selection view.</p>
+        <div class="flex-container">
+          <img src="img/fp1-middle.png" alt="character selection view in progress">
+
+        </div>
+
+        <li>
+          <p>STPE 8: Test out all the behavior so that they are properly functioning. Deploy the
+            site to github.
+          </p>
+        </li>
+      </ol>
+
+      <h2>Issue Deep-Dive</h2>
+      <p>Issue: As I tried to implement the character selection function, considering that I want
+        easily modifying and adding new characters in the future, I was struggle on what data
+        structure to use and how to make it work.
+
+      <p>Solviong Process: I eventually decided to use Group() embedded in p5.play as it allows for
+        a uniform styling of child sprite elements and function as an array, which perfectly suited
+        for character avatars and information. However, this class is very unintuitive to use. I could
+        not figure out how to specify which sprite i am looking at within the group, since I need to
+        click on the sprite to select the character. Eventually, I figured out to use a for loop every
+        time when my mouse clicked to determine the index of the sprite and use that for identifying
+        the exact character player is clicking.
+      </p>
+
+      <h2>Ideas and Future</h2>
+      <ul>
+        <li>
+          Add proper stylings, including pleasing colors and music.
+        </li>
+        <li>
+          Add database connection for player to save their character current level and data.
+        </li>
+        <li>
+          More animations shown on characters attacking each other as the player activate attack.
+        </li>
+        <li>
+          Add selection and fetching for different characters options.
+        </li>
+        <li>
+          Allow the use to choose which to enhance after level up, such as critical chance, damage or hp.
+        </li>
+        <li>
+          Add other movement options besides attack, such as defence, heal, etc.
+        </li>
+      </ul>
+    </main>
+
+    <footer>
+      <p>©2023 Alan Zhou. All Right Reserved</p>
+    </footer>
+  </body>
+</html>
