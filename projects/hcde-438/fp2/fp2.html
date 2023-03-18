@@ -78,10 +78,10 @@
         can level up and the enemy will increase in difficulty as well.
       </p>
 
-      <p>Following is are gifs of the two game behavior.</p>
+      <p>Following is are screenshots of the game menu and in-game view.</p>
       <div class="flex-container">
-          <img src="img/fp1-in-game.gif" class="sketch-box" alt="A gif of the game view">
-          <img src="img/fp1-character-select.gif" class="sketch-box" alt="A gif of the character selection view">
+          <img src="img/fp2-menu-page.jpg" class="sketch-box" alt="A gif of the game menu view">
+          <img src="img/fp2-in-game.gif" class="sketch-box" alt="A gif of the in game view">
       </div>
 
       <h2>Development process</h2>
@@ -96,67 +96,61 @@
             install all the packages required for the project.
           </p>
         </li>
-        <li>
-          <p>STPE 3: Implement the new interface, draw all the canva elements including
-            new buttons and text prompts.
-          </p>
-        </li>
-        <li>
-          <p>STPE 4: Implement the new damage and hp calculation formula that based of
-            current levels.
-          </p>
-        </li>
-
-        <li>
-          <p>STPE 5: Implement the new mechanics so that the boss will attack back in
-            return every user attack.
-          </p>
-        </li>
-
-        <li>
-          <p>STPE 6: Rearrange the overall logic of the game so that certain behavior or
-            user action can only happen at certain view.
-          </p>
-        </li>
-
-        <li>
-          <p>STPE 7: Finish the character selection panel. Make sure each sprite are clickable
-            and will replace the player character.
-          </p>
-        </li>
-
-        <p>Following is the middle process placeholder for character selection view.</p>
+        <p>Following is the middle process before the enemy attack damage is implemented.</p>
         <div class="flex-container">
-          <img src="img/fp1-middle.png" alt="character selection view in progress">
-
+          <img src="img/fp2-middle-step.gif" class="sketch-box" alt="Battle scene in progress">
         </div>
+        <li>
+          <p>STPE 3: Added all the sprite necessary for showing damage towards the player,
+            including prompts and hit effect.
+          </p>
+        </li>
+        <li>
+          <p>STPE 4: Implement the mechanism so that right now player can be defeated and
+            instruct player to retry the game accordingly.
+          </p>
+        </li>
 
         <li>
-          <p>STPE 8: Test out all the behavior so that they are properly functioning. Deploy the
-            site to github.
+          <p>STPE 5: Implement the critical attack indication, which is main factor to determine
+            whether player will win in the battle.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 6: Add all the new stylings and media, including new fonts, wallpaper,
+            sound effects, and background musics. Apply them into the game at the proper
+            phase.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 7: Add new characters into the selection menu.
+          </p>
+        </li>
+
+        <li>
+          <p>STPE 8: Test out all the behavior so that they are properly functioning.
+            Finish the writeup and deploy the game to github.
           </p>
         </li>
       </ol>
 
       <h2>Issue Deep-Dive</h2>
-      <p>Issue: As I tried to implement the character selection function, considering that I want
-        easily modifying and adding new characters in the future, I was struggle on what data
-        structure to use and how to make it work.
+      <p>Issue: Since I have many sprites functioned as buttons, and most them are centered
+        at the page, many sprites overlayed and collided with each other and cause unwanted
+        behavior such as altering the sprite direction.
 
-      <p>Solviong Process: I eventually decided to use Group() embedded in p5.play as it allows for
-        a uniform styling of child sprite elements and function as an array, which perfectly suited
-        for character avatars and information. However, this class is very unintuitive to use. I could
-        not figure out how to specify which sprite i am looking at within the group, since I need to
-        click on the sprite to select the character. Eventually, I figured out to use a for loop every
-        time when my mouse clicked to determine the index of the sprite and use that for identifying
-        the exact character player is clicking.
+      <p>Solviong Process: I tried many ways to solve it. First is slightly change the y
+        coordinate position of each button so they are adjusted to prevent overlay. However,
+        the total numbers of buttons were too many for this to work. I also tried to change
+        the depth (does not work) and set collider to `none` (it will make these sprites
+        unclickable), neither of which worked. Eventually, I combined some of the button
+        sprites together by changing their text and function constantly.
       </p>
 
       <h2>Ideas and Future</h2>
       <ul>
-        <li>
-          Add proper stylings, including pleasing colors and music.
-        </li>
         <li>
           Add database connection for player to save their character current level and data.
         </li>
