@@ -1,0 +1,6 @@
+export { Home } from './Home'
+export { Gallery } from './Gallery'
+export { Resume } from './Resume'
+export { CaseStudy } from './CaseStudy'
+export { CaseStudyDetail } from './CaseStudyDetail'
+export { About } from './About'
