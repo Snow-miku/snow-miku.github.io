@@ -30,8 +30,11 @@ jobs:
 
       - uses: actions/setup-node@v7
         with:
-          node-version: 'lts/*'
+          node-version: 'latest'
           cache: 'pnpm'
+
+      - name: Show toolchain versions
+        run: node -v && pnpm -v
 
       - name: Install current dependencies
         run: pnpm install --frozen-lockfile
