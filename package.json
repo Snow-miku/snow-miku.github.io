@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "typecheck": "tsc -b",
     "lint": "eslint .",
+    "smoke": "node scripts/smoke-test.mjs",
+    "verify": "pnpm run typecheck && pnpm run build && pnpm run smoke",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -29,12 +32,13 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
-    "@types/three": "^0.185.1",
+    "@types/three": "^0.185.4",
     "@vitejs/plugin-react": "latest",
     "eslint": "latest",
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-refresh": "latest",
     "globals": "latest",
+    "playwright": "^1.62.1",
     "tailwindcss": "latest",
     "tw-animate-css": "latest",
     "typescript": "latest",

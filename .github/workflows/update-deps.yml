@@ -1,0 +1,122 @@
+name: Weekly dependency update
+
+# Keeps every package on its latest release. If the upgraded tree still
+# typechecks, builds and renders, it goes straight to main and redeploys.
+# If anything breaks, main is left untouched and an issue is filed instead.
+
+on:
+  schedule:
+    - cron: '0 16 * * 1' # Mondays 09:00 America/Los_Angeles
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+  actions: write
+
+concurrency:
+  group: update-deps
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install current dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Upgrade everything to latest
+        id: upgrade
+        run: |
+          pnpm update --latest 2>&1 | tee /tmp/upgrade.log
+          if git diff --quiet -- pnpm-lock.yaml package.json; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Already on the latest of everything - nothing to do."
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            {
+              echo 'summary<<SUMMARY_EOF'
+              grep -E '^[-+] ' /tmp/upgrade.log | sed 's/^/  /' || true
+              echo 'SUMMARY_EOF'
+            } >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install Chromium for the smoke test
+        if: steps.upgrade.outputs.changed == 'true'
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Verify the upgraded tree
+        id: verify
+        if: steps.upgrade.outputs.changed == 'true'
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          pnpm run verify 2>&1 | tee /tmp/verify.log
+
+      - name: Ship it
+        if: steps.upgrade.outputs.changed == 'true' && steps.verify.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UPGRADE_SUMMARY: ${{ steps.upgrade.outputs.summary }}
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json pnpm-lock.yaml
+          printf 'chore(deps): weekly upgrade to latest\n\nVerified with typecheck + build + smoke test before pushing.\n\n%s\n' "$UPGRADE_SUMMARY" | git commit -F -
+          git push
+
+          # A push made with GITHUB_TOKEN does not trigger other workflows,
+          # so kick the deploy explicitly (workflow_dispatch is exempt).
+          gh workflow run deploy.yml --ref main
+
+      - name: File an issue if the upgrade broke something
+        if: steps.upgrade.outputs.changed == 'true' && steps.verify.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UPGRADE_SUMMARY: ${{ steps.upgrade.outputs.summary }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "The weekly upgrade did not pass verification, so \`main\` was left alone"
+            echo "and the site is still running the previous dependency set."
+            echo
+            echo "### Attempted upgrade"
+            echo '```'
+            echo "$UPGRADE_SUMMARY"
+            echo '```'
+            echo
+            echo "### Failure"
+            echo '```'
+            tail -c 8000 /tmp/verify.log
+            echo '```'
+            echo
+            echo "[Full run log]($RUN_URL)"
+          } > /tmp/issue.md
+
+          gh label create dependencies --color 0366d6 --description "Automated dependency upgrades" 2>/dev/null || true
+          EXISTING=$(gh issue list --label dependencies --state open --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body-file /tmp/issue.md
+          else
+            gh issue create --title "Weekly dependency upgrade failed" --label dependencies --body-file /tmp/issue.md
+          fi
+
+      - name: Close the tracking issue once upgrades are healthy again
+        if: steps.verify.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --label dependencies --state open --json number --jq '.[].number'); do
+            gh issue close "$n" --comment "Upgrades are passing again as of ${{ github.sha }}."
+          done

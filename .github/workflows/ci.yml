@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    name: Typecheck, build & smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Chromium for the smoke test
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Smoke test (does the site actually render?)
+        run: pnpm run smoke
+
+      # typescript-eslint does not support TypeScript 7 yet, so lint is
+      # reported but never blocks. Make this a hard gate again once
+      # https://github.com/typescript-eslint/typescript-eslint/issues/10940 ships.
+      - name: Lint (advisory)
+        continue-on-error: true
+        run: pnpm run lint
