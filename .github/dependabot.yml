@@ -1,0 +1,14 @@
+version: 2
+updates:
+  # npm packages are handled by .github/workflows/update-deps.yml, which
+  # verifies with a real browser render before pushing. Dependabot only
+  # covers GitHub Actions versions, which that workflow cannot see.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: 'chore(actions)'
+    labels:
+      - dependencies
