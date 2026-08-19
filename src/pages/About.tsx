@@ -1,25 +1,26 @@
-import { Github, Linkedin, Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { SectionTitle } from '@/components/common/SectionTitle'
+import { GithubIcon, LinkedinIcon } from '@/components/common/BrandIcons'
 
 const socialLinks = [
   {
     href: 'https://github.com/snow-miku',
-    icon: Github,
+    icon: GithubIcon,
     label: 'GitHub',
     handle: '@snow-miku',
   },
   {
-    href: 'https://linkedin.com/in/yourprofile',
-    icon: Linkedin,
+    href: 'https://www.linkedin.com/in/yuhong-zhou/',
+    icon: LinkedinIcon,
     label: 'LinkedIn',
-    handle: 'Your Name',
+    handle: 'Yuhong (Alan) Zhou',
   },
   {
-    href: 'mailto:your@email.com',
+    href: 'mailto:4lanzhou@gmail.com',
     icon: Mail,
     label: 'Email',
-    handle: 'your@email.com',
+    handle: '4lanzhou@gmail.com',
   },
 ]
 
@@ -81,7 +82,7 @@ export function About() {
 
             <div className="prose prose-lg max-w-none">
               <p className="text-ink-light leading-relaxed">
-                Hello! I'm a Full Stack Engineer and UI/UX Designer with a
+                Hello! I'm an Automation Engineer and Visual Designer with a
                 passion for creating digital experiences that are both beautiful
                 and functional.
               </p>

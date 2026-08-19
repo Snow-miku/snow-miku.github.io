@@ -1,10 +1,12 @@
 # AZ Studio - Portfolio Website
 
-Personal portfolio website for Alan Zhou - Full Stack Engineer & UI/UX Designer.
+Personal portfolio website for Alan Zhou - Automation Engineer + Visual Designer.
 
 ## Important Instructions
 
-- **Always use `@latest` tag when installing packages**: When adding new dependencies, always use `npm install package@latest` or `npm install -D package@latest` to ensure the latest version is installed.
+- **Package manager: pnpm only** (do NOT use npm or yarn — mixing lockfiles breaks the install). The lockfile is `pnpm-lock.yaml`; `package-lock.json` must not exist.
+- **Always use `@latest` tag when installing packages**: When adding new dependencies, always use `pnpm add package@latest` or `pnpm add -D package@latest` to ensure the latest version is installed.
+- **Upgrading everything**: run `pnpm update --latest`, verify with `pnpm dev`, then commit the updated `pnpm-lock.yaml`. CI installs with `--frozen-lockfile`, so deploys always match the lockfile.
 
 ## Tech Stack
 
@@ -33,10 +35,10 @@ src/
 ## Commands
 
 ```bash
-npm run dev      # Start dev server (localhost:5173)
-npm run build    # Production build to ./dist
-npm run preview  # Preview production build
-npm run lint     # Run ESLint
+pnpm dev      # Start dev server (localhost:5173)
+pnpm build    # Production build to ./dist
+pnpm preview  # Preview production build
+pnpm lint     # Run ESLint
 ```
 
 ## Design System

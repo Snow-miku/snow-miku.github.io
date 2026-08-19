@@ -23,3 +23,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude drop zone (not committed)
+/temp/
+
+# stray scratch file
+/tmp_create_recon_curl_config.py

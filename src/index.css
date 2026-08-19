@@ -3,39 +3,70 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================
+   AZ Studio — "PRTS" theme
+   Clay render + Arknights FUI
+   Light: white/gray clay render
+   Dark:  black + white glow
+   ============================================ */
+
+:root {
+  --bg: #f2f3f5;
+  --fg: #1c1d1f;
+  --surface: #fbfbfc;
+  --line: #d7d9dc;
+  --line-strong: #a9acb0;
+  --mute: #85888c;
+  --faint: #b8bbbe;
+  --glow-color: rgb(0 0 0 / 0%);
+}
+
+.dark {
+  --bg: #0a0b0c;
+  --fg: #f0f1f2;
+  --surface: #131415;
+  --line: #26282b;
+  --line-strong: #4a4d51;
+  --mute: #808387;
+  --faint: #4e5155;
+  --glow-color: rgb(255 255 255 / 55%);
+}
+
+@theme inline {
+  /* Semantic tokens (flip with .dark) */
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-mute: var(--mute);
+  --color-faint: var(--faint);
+
+  /* Legacy aliases (keep old pages readable in both modes) */
+  --color-paper-blue: var(--bg);
+  --color-paper-blue-light: var(--surface);
+  --color-paper-blue-dark: var(--line);
+  --color-cream: var(--surface);
+  --color-cream-light: var(--surface);
+  --color-kraft: var(--faint);
+  --color-kraft-light: var(--line);
+  --color-kraft-dark: var(--mute);
+  --color-ink: var(--fg);
+  --color-ink-light: var(--fg);
+  --color-ink-muted: var(--mute);
+  --color-tag-bg: var(--fg);
+  --color-tag-text: var(--bg);
+}
+
 @theme {
-  /* Color Palette - Inspired by shimekiri-techo */
-  /* Main blue-gray paper color (from reference image) */
-  --color-paper-blue: #b4c4ce;
-  --color-paper-blue-light: #c4d2da;
-  --color-paper-blue-dark: #9eb0bc;
-
-  /* Cream/white for section separators */
-  --color-cream: rgb(251 250 248);
-  --color-cream-light: rgb(251 250 248 / 80%);
-
-  /* Kraft/accent colors */
-  --color-kraft: #c9b99a;
-  --color-kraft-light: #ddd0b8;
-  --color-kraft-dark: #a89878;
-
-  /* Text colors - using shimekiri-techo's #393939 */
-  --color-ink: #1a1a1a;
-  --color-ink-light: #393939;
-  --color-ink-muted: #393939;
-
-  /* Tag/badge background - shimekiri-techo style */
-  --color-tag-bg: #393939;
-  --color-tag-text: #ffffff;
-
-  /* Light backgrounds */
-  --color-white: #ffffff;
-
-  /* Line/border color */
-  --color-line: #393939;
-
-  /* Typography - tsukuGoB style (using similar geometric sans) */
-  --font-sans: "Zen Kaku Gothic New", "Inter", "Noto Sans SC", system-ui, sans-serif;
+  /* Typography */
+  --font-sans: "Inter", "Noto Sans SC", system-ui, sans-serif;
+  /* Display stack (uppercase geometric, PRTS style):
+     1. "Novecento sans wide" — renders if installed locally (free desktop license)
+     2. "novecento-sans-wide" — Adobe Fonts webfont name, activates if a kit is ever linked
+     3. "Julius Sans One" — free Google Fonts lookalike for public visitors
+     4. Inter — final fallback */
+  --font-display: "Novecento sans wide", "novecento-sans-wide", "Julius Sans One", "Inter", "Noto Sans SC", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Fira Code", monospace;
 
   /* Spacing */
@@ -60,19 +91,10 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #b4c4ce;
-  color: var(--color-ink);
+  background-color: var(--bg);
+  color: var(--fg);
   min-height: 100vh;
-}
-
-/* Paper texture background - fine delicate fiber texture */
-.bg-texture {
-  background-color: #b4c4ce;
-  background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.15' numOctaves='6' seed='12' stitchTiles='stitch' result='noise'/%3E%3CfeDiffuseLighting in='noise' lighting-color='%23e8eef2' surfaceScale='0.5' result='light'%3E%3CfeDistantLight azimuth='45' elevation='65'/%3E%3C/feDiffuseLighting%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)'/%3E%3C/svg%3E"),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='fibers'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8 0.15' numOctaves='4' seed='20' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.65 0 0 0 0 0.72 0 0 0 0 0.78 0 0 0 0.1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fibers)'/%3E%3C/svg%3E");
-  background-blend-mode: multiply, overlay;
-  background-size: 300px 300px, 200px 200px;
+  transition: background-color 0.4s var(--ease-smooth), color 0.4s var(--ease-smooth);
 }
 
 /* Utility classes */
@@ -82,10 +104,87 @@ body {
   padding: 0 1.5rem;
 }
 
+/* White glow text — only visible in dark mode */
+.glow {
+  transition: text-shadow 0.4s var(--ease-smooth);
+}
+.dark .glow {
+  text-shadow:
+    0 0 8px var(--glow-color),
+    0 0 28px rgb(255 255 255 / 22%);
+}
+
+/* Ghost outline letters (hero watermark) */
+.ghost-text {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--line);
+  user-select: none;
+}
+.dark .ghost-text {
+  -webkit-text-stroke: 1px var(--line-strong);
+}
+
+/* Crystal facets — same fills in both modes (white object), glow in dark */
+.crystal polygon {
+  stroke: #c6c9cc;
+  stroke-width: 0.8;
+}
+.dark .crystal polygon {
+  stroke: rgb(255 255 255 / 28%);
+}
+.crystal .f1 { fill: #ffffff; }
+.crystal .f2 { fill: #f0f1f2; }
+.crystal .f3 { fill: #e2e4e6; }
+.crystal .f4 { fill: #eceef0; }
+.crystal .f5 { fill: #d8dadc; }
+.crystal .f6 { fill: #cbced1; }
+.crystal .f7 { fill: #dee0e2; }
+.crystal .f8 { fill: #d3d6d8; }
+.crystal .f9 { fill: #c3c6c9; }
+.dark .crystal {
+  filter: drop-shadow(0 0 14px rgb(255 255 255 / 18%));
+}
+.dark .crystal3d canvas {
+  filter: drop-shadow(0 0 18px rgb(255 255 255 / 20%));
+}
+
+/* Floating animation for crystal */
+@keyframes crystal-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-crystal-float {
+  animation: crystal-float 6s var(--ease-smooth) infinite;
+}
+
+/* Slow rotation for dashed ring */
+@keyframes ring-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-ring-spin {
+  animation: ring-spin 60s linear infinite;
+  transform-origin: center;
+}
+
+/* Blinking cursor / status dot */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+.animate-blink {
+  animation: blink 1.6s step-end infinite;
+}
+
+/* Plexus glow in dark */
+.dark .plexus {
+  filter: drop-shadow(0 0 6px rgb(255 255 255 / 25%));
+}
+
 /* Selection color */
 ::selection {
-  background-color: var(--color-kraft);
-  color: var(--color-ink);
+  background-color: var(--fg);
+  color: var(--bg);
 }
 
 /* Smooth transitions */
@@ -96,9 +195,13 @@ button {
 
 /* Focus visible */
 :focus-visible {
-  outline: 2px solid var(--color-ink);
+  outline: 2px solid var(--fg);
   outline-offset: 2px;
 }
+
+/* ============================================
+   shadcn/ui tokens
+   ============================================ */
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -142,7 +245,7 @@ button {
 }
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -213,8 +316,5 @@ button {
 @layer base {
   * {
     @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }

@@ -1,2 +1,8 @@
 export { ProjectCard } from './ProjectCard'
 export { SectionTitle } from './SectionTitle'
+export { Crystal } from './Crystal'
+export { Crystal3D } from './Crystal3D'
+export { Plexus } from './Plexus'
+export { FuiSection } from './FuiSection'
+export { Corners } from './Corners'
+export { FuiImage } from './FuiImage'

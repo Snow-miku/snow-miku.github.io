@@ -1,18 +1,19 @@
-import { Github, Linkedin, Mail } from 'lucide-react'
+import { Mail } from 'lucide-react'
+import { GithubIcon, LinkedinIcon } from '@/components/common/BrandIcons'
 
 const socialLinks = [
   {
     href: 'https://github.com/snow-miku',
-    icon: Github,
+    icon: GithubIcon,
     label: 'GitHub',
   },
   {
-    href: 'https://linkedin.com/in/yourprofile',
-    icon: Linkedin,
+    href: 'https://www.linkedin.com/in/yuhong-zhou/',
+    icon: LinkedinIcon,
     label: 'LinkedIn',
   },
   {
-    href: 'mailto:your@email.com',
+    href: 'mailto:4lanzhou@gmail.com',
     icon: Mail,
     label: 'Email',
   },
@@ -22,12 +23,18 @@ export function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-ink/10 bg-paper-blue-dark/30">
-      <div className="container-main py-8">
+    <footer className="border-t border-line">
+      <div className="container-main py-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Copyright */}
-          <p className="text-sm text-ink-muted">
-            {currentYear} AZ Studio. All rights reserved.
+          <p className="font-mono text-[11px] tracking-[0.15em] text-mute">
+            © {currentYear} AZ_STUDIO // ALL_RIGHTS_RESERVED
+          </p>
+
+          {/* Status line */}
+          <p className="hidden md:flex items-center gap-2 font-mono text-[11px] tracking-[0.15em] text-mute">
+            <span className="inline-block w-1.5 h-1.5 bg-fg animate-blink" />
+            SYS.STATUS — ONLINE
           </p>
 
           {/* Social Links */}
@@ -38,10 +45,10 @@ export function Footer() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-ink-muted hover:text-ink transition-colors"
+                className="text-mute hover:text-fg transition-colors"
                 aria-label={link.label}
               >
-                <link.icon className="h-5 w-5" />
+                <link.icon className="h-4 w-4" />
               </a>
             ))}
           </div>

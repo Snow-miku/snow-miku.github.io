@@ -1,9 +1,18 @@
 import { useParams, Link } from 'react-router-dom'
-import { ArrowLeft, Clock, User, Wrench } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
+import { ArrowLeft } from 'lucide-react'
+import { FuiImage } from '@/components/common/FuiImage'
 import { caseStudies } from '@/data/projects'
+
+function MetaBlock({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="border-t border-line pt-4">
+      <span className="block font-mono text-[10px] tracking-[0.25em] text-mute mb-2">
+        {label}
+      </span>
+      {children}
+    </div>
+  )
+}
 
 export function CaseStudyDetail() {
   const { id } = useParams<{ id: string }>()
@@ -11,173 +20,194 @@ export function CaseStudyDetail() {
 
   if (!study) {
     return (
-      <div className="py-20">
+      <div className="py-32">
         <div className="container-main text-center">
-          <h1 className="text-3xl font-medium text-ink mb-4">
-            Case Study Not Found
+          <span className="inline-block w-8 h-8 rotate-45 border-2 border-faint mb-6" />
+          <h1 className="font-display font-semibold text-2xl tracking-[0.04em] text-fg uppercase mb-3">
+            File not found
           </h1>
-          <p className="text-ink-muted mb-8">
-            The case study you're looking for doesn't exist.
+          <p className="font-mono text-xs tracking-[0.2em] text-mute mb-10">
+            ERR_404 // RECORD_DOES_NOT_EXIST
           </p>
-          <Button asChild variant="outline" className="border-ink text-ink">
-            <Link to="/case-study">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              Back to Case Studies
-            </Link>
-          </Button>
+          <Link
+            to="/case-study"
+            className="inline-flex items-center gap-3 h-11 px-7 border border-line-strong text-fg font-display font-semibold text-sm tracking-[0.2em] uppercase hover:bg-fg hover:text-bg hover:border-fg"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Back to archive
+          </Link>
         </div>
       </div>
     )
   }
 
+  const studyIndex = caseStudies.indexOf(study)
+  const num = String(studyIndex + 1).padStart(2, '0')
+
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="relative">
-        <div className="aspect-[21/9] overflow-hidden">
-          <img
-            src={study.coverImage}
-            alt={study.title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-ink/60 to-transparent" />
+    <div className="py-24">
+      <div className="container-main">
+        {/* Back link */}
+        <Link
+          to="/case-study"
+          className="inline-flex items-center gap-2 font-mono text-[11px] tracking-[0.25em] text-mute hover:text-fg mb-10"
+        >
+          <ArrowLeft className="h-3.5 w-3.5" />
+          ARCHIVE // FILE_{num}
+        </Link>
+
+        {/* Title */}
+        <div className="mb-10">
+          <span className="block font-mono text-[11px] tracking-[0.25em] text-mute mb-3">
+            // {study.subtitle.toUpperCase()}
+          </span>
+          <h1 className="font-display font-bold text-4xl md:text-6xl tracking-[0.02em] text-fg glow uppercase">
+            {study.title}
+          </h1>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
-          <div className="container-main">
-            <Button
-              asChild
-              variant="ghost"
-              size="sm"
-              className="text-cream/80 hover:text-cream hover:bg-cream/10 mb-4"
-            >
-              <Link to="/case-study">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back
-              </Link>
-            </Button>
-            <span className="text-cream/70 text-sm uppercase tracking-wider block mb-2">
-              {study.subtitle}
-            </span>
-            <h1 className="text-4xl md:text-5xl font-medium text-cream">
-              {study.title}
-            </h1>
-          </div>
-        </div>
-      </section>
 
-      {/* Content */}
-      <section className="py-12">
-        <div className="container-main">
-          <div className="grid lg:grid-cols-4 gap-10">
-            {/* Sidebar */}
-            <aside className="lg:col-span-1 space-y-6">
-              <div>
-                <div className="flex items-center gap-2 text-ink-muted mb-2">
-                  <Clock className="h-4 w-4" />
-                  <span className="text-sm uppercase tracking-wider">Duration</span>
-                </div>
-                <p className="text-ink font-medium">{study.duration}</p>
+        {/* Cover */}
+        <FuiImage
+          src={study.coverImage}
+          alt={study.title}
+          label={`FILE_${num} // COVER`}
+          className="aspect-[21/9] border border-line mb-14"
+        />
+
+        <div className="grid lg:grid-cols-4 gap-12">
+          {/* Sidebar meta */}
+          <aside className="lg:col-span-1 space-y-6 lg:sticky lg:top-24 self-start">
+            <MetaBlock label="DURATION">
+              <p className="text-fg font-medium">{study.duration}</p>
+            </MetaBlock>
+            <MetaBlock label="ROLE">
+              <p className="text-fg font-medium">{study.role}</p>
+            </MetaBlock>
+            <MetaBlock label="TOOLS">
+              <div className="flex flex-wrap gap-1.5">
+                {study.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="font-mono text-[10px] tracking-[0.1em] px-2 py-0.5 border border-line text-mute"
+                  >
+                    {tool}
+                  </span>
+                ))}
               </div>
-
-              <Separator className="bg-ink/10" />
-
-              <div>
-                <div className="flex items-center gap-2 text-ink-muted mb-2">
-                  <User className="h-4 w-4" />
-                  <span className="text-sm uppercase tracking-wider">Role</span>
-                </div>
-                <p className="text-ink font-medium">{study.role}</p>
+            </MetaBlock>
+            <MetaBlock label="TAGS">
+              <div className="flex flex-wrap gap-1.5">
+                {study.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-mono text-[10px] tracking-[0.1em] px-2 py-0.5 border border-line text-mute"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
+            </MetaBlock>
+          </aside>
 
-              <Separator className="bg-ink/10" />
+          {/* Main content */}
+          <main className="lg:col-span-3 space-y-14">
+            <p className="text-xl text-fg leading-relaxed">{study.description}</p>
 
-              <div>
-                <div className="flex items-center gap-2 text-ink-muted mb-2">
-                  <Wrench className="h-4 w-4" />
-                  <span className="text-sm uppercase tracking-wider">Tools</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {study.tools.map((tool) => (
-                    <Badge
-                      key={tool}
-                      variant="secondary"
-                      className="bg-kraft/30 text-ink-light"
-                    >
-                      {tool}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-
-              <Separator className="bg-ink/10" />
-
-              <div>
-                <span className="text-sm uppercase tracking-wider text-ink-muted block mb-2">
-                  Tags
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  {study.tags.map((tag) => (
-                    <Badge
-                      key={tag}
-                      variant="outline"
-                      className="border-ink/20 text-ink-light"
-                    >
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </aside>
-
-            {/* Main Content */}
-            <main className="lg:col-span-3 space-y-12">
-              <p className="text-xl text-ink-light leading-relaxed">
-                {study.description}
-              </p>
-
-              {study.sections.map((section, index) => (
-                <div key={index}>
-                  <h2 className="text-2xl font-medium text-ink mb-4">
+            {study.sections.map((section, index) => (
+              <div key={index}>
+                <div className="flex items-baseline gap-3 border-b border-line pb-3 mb-5">
+                  <span className="font-mono text-[11px] tracking-[0.2em] text-mute">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                  <h2 className="font-display font-semibold text-xl md:text-2xl tracking-[0.03em] text-fg uppercase">
                     {section.title}
                   </h2>
-                  <p className="text-ink-muted leading-relaxed whitespace-pre-line">
-                    {section.content}
-                  </p>
-                  {section.images && section.images.length > 0 && (
-                    <div className="mt-6 grid gap-4">
-                      {section.images.map((image, imgIndex) => (
-                        <img
-                          key={imgIndex}
-                          src={image}
-                          alt={`${section.title} - Image ${imgIndex + 1}`}
-                          className="w-full rounded-lg shadow-md"
-                        />
-                      ))}
-                    </div>
-                  )}
                 </div>
-              ))}
-            </main>
-          </div>
-        </div>
-      </section>
+                <p className="text-mute leading-relaxed whitespace-pre-line">
+                  {section.content}
+                </p>
 
-      {/* Navigation */}
-      <section className="py-12 border-t border-ink/10">
-        <div className="container-main text-center">
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-ink text-ink hover:bg-ink hover:text-cream"
-          >
-            <Link to="/case-study">
-              <ArrowLeft className="mr-2 h-4 w-4" />
-              View All Case Studies
-            </Link>
-          </Button>
+                {/* Native color palette */}
+                {section.palette && (
+                  <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                    {section.palette.map((color) => (
+                      <div key={color.hex} className="border border-line bg-surface">
+                        <div
+                          className="aspect-square border-b border-line"
+                          style={{ backgroundColor: color.hex }}
+                        />
+                        <div className="p-2.5">
+                          <p className="text-xs font-medium text-fg leading-tight">
+                            {color.name}
+                          </p>
+                          <p className="font-mono text-[10px] tracking-[0.1em] text-mute mt-1">
+                            {color.hex.toUpperCase()}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Native type-scale specimen */}
+                {section.typeScale && (
+                  <div className="mt-6 border border-line bg-surface">
+                    {section.typeScale.map((t, i) => (
+                      <div
+                        key={t.label}
+                        className={`grid sm:grid-cols-[180px_1fr] gap-2 sm:gap-6 items-baseline px-5 py-4 ${
+                          i > 0 ? 'border-t border-line' : ''
+                        }`}
+                      >
+                        <span className="font-mono text-[10px] tracking-[0.15em] text-mute">
+                          {t.spec.toUpperCase()}
+                        </span>
+                        <span
+                          className="text-fg leading-snug truncate"
+                          style={{
+                            fontFamily: `'${t.fontFamily}', sans-serif`,
+                            fontSize: `${t.sizePx}px`,
+                            fontWeight: t.weight,
+                            textTransform: t.uppercase ? 'uppercase' : 'none',
+                          }}
+                        >
+                          {t.label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {section.images && section.images.length > 0 && (
+                  <div className="mt-6 grid gap-4">
+                    {section.images.map((image, imgIndex) => (
+                      <FuiImage
+                        key={imgIndex}
+                        src={image}
+                        alt={`${section.title} — image ${imgIndex + 1}`}
+                        label={`IMG_${String(imgIndex + 1).padStart(2, '0')}`}
+                        className="border border-line"
+                        natural
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </main>
         </div>
-      </section>
+
+        {/* Footer nav */}
+        <div className="mt-20 pt-8 border-t border-line flex justify-center">
+          <Link
+            to="/case-study"
+            className="inline-flex items-center gap-3 h-11 px-7 border border-line-strong text-fg font-display font-semibold text-sm tracking-[0.2em] uppercase hover:bg-fg hover:text-bg hover:border-fg"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            All case studies
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }
