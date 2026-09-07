@@ -38,7 +38,7 @@
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-refresh": "latest",
     "globals": "latest",
-    "playwright": "^1.62.1",
+    "playwright": "^1.63.0",
     "tailwindcss": "latest",
     "tw-animate-css": "latest",
     "typescript": "latest",
